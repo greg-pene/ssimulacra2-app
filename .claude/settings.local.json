@@ -1,0 +1,37 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gh api *)",
+      "Bash(npm search *)",
+      "Bash(npm info *)",
+      "Bash(which ssimulacra2 *)",
+      "Bash(ssimulacra2 --help)",
+      "Bash(npm create *)",
+      "Bash(npx create-vite@latest . --template react)",
+      "Bash(pkill -f \"node server/index.js\")",
+      "Bash(pkill -f \"vite\")",
+      "Bash(npm run *)",
+      "Bash(sleep 3 && cat /tmp/ssim-dev.log)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(curl -s -X POST http://localhost:3001/api/analyze -H 'Content-Type: application/json' -d '{ *)",
+      "Bash(python3 -m json.tool)",
+      "Bash(npm list *)",
+      "Bash(node -e \"require\\('sharp'\\)\")",
+      "Bash(npm install *)",
+      "Bash(node /Users/gregoirepene/Documents/Dev/SSIMULACRA2App/server/index.js)",
+      "Bash(xargs kill -9)",
+      "Bash(curl -sI -A 'Mozilla/5.0 \\(Macintosh; Intel Mac OS X 10_15_7\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/125.0.0.0 Safari/537.36' https://res.cloudinary.com/gpene3/image/upload/w_1200/q_100/v1781605665/RV8L25H0MLT__Dustin-Suede-Jacket__020__D.jpg)",
+      "Bash(curl -sI -A 'Mozilla/5.0 \\(Macintosh; Intel Mac OS X 10_15_7\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/125.0.0.0 Safari/537.36' -H 'Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8' https://res.cloudinary.com/gpene3/image/upload/w_1200/q_100/v1781605665/RV8L25H0MLT__Dustin-Suede-Jacket__020__D.jpg)",
+      "Bash(ssimulacra2)",
+      "Read(//tmp/claude-503/ssimulacra2/**)",
+      "Bash(curl -s -L -A 'Mozilla/5.0 \\(Macintosh; Intel Mac OS X 10_15_7\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/125.0.0.0 Safari/537.36' -H 'Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8' https://di2f2eolk-res.cloudinary.com/image/upload/q_auto:good/w_1200/v1777989346/RV8L25H0MLT__Dustin-Suede-Jacket__020__D.jpg -o /tmp/test_cld.avif)",
+      "Read(//tmp/**)",
+      "Bash(ssimulacra2 /tmp/test_cld.avif /tmp/test_cld.avif)",
+      "Bash(ffmpeg -i /tmp/test_cld.avif /tmp/test_cld.png -y)",
+      "Bash(ssimulacra2 /tmp/test_cld.png /tmp/test_cld.png)",
+      "Bash(curl -sI \"https://onyx-linen.myshopify.com/cdn/shop/files/cloudinary__di2f2eolk__image__upload__RV8L25H0MLT__Dustin-Suede-Jacket__020__D__cld.png?v=1777991559&width=1800\")",
+      "Bash(curl -sI -H \"Accept: */*\" \"https://onyx-linen.myshopify.com/cdn/shop/files/cloudinary__di2f2eolk__image__upload__RV8L25H0MLT__Dustin-Suede-Jacket__020__D__cld.png?v=1777991559&width=1800\")",
+      "Bash(gh auth *)"
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: ssimulacra2-app
+    runtime: docker
+    plan: starter
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: SSIMULACRA2_BIN
+        value: /usr/local/bin/ssimulacra2
+      - key: FFMPEG_BIN
+        value: /usr/bin/ffmpeg
+      - key: FFPROBE_BIN
+        value: /usr/bin/ffprobe
