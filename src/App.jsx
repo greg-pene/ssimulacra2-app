@@ -57,6 +57,11 @@ export default function App() {
 
   const setUrl = (key) => (val) => setUrls(u => ({ ...u, [key]: val }))
 
+  // Re-run analysis when UA switches if results already exist
+  useEffect(() => {
+    if (results) analyze()
+  }, [userAgent])
+
   // Keep URL params in sync as fields change
   useEffect(() => {
     const p = new URLSearchParams()

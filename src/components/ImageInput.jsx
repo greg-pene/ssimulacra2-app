@@ -9,7 +9,7 @@ function formatBytes(bytes) {
 }
 
 export default function ImageInput({ label, badge, badgeColor, urlValue, onUrlChange, placeholder, result, isWinner, previewSrc, onThumbnailClick }) {
-  const [blurPreview, setBlurPreview] = useState(null)
+  const [blurPreview, setBlurPreview] = useState(urlValue || null)
   const [previewError, setPreviewError] = useState(false)
 
   // When a fresh previewSrc arrives (after analysis), use it and clear any error
