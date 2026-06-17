@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import ImageInput from './components/ImageInput.jsx'
 import ScoreGauge from './components/ScoreGauge.jsx'
 import CompareModal from './components/CompareModal.jsx'
@@ -29,8 +29,17 @@ const UA_OPTIONS = [
   },
 ]
 
+function readParams() {
+  const p = new URLSearchParams(window.location.search)
+  return {
+    original: p.get('original') || '',
+    cloudinary: p.get('cloudinary') || '',
+    competitor: p.get('competitor') || '',
+  }
+}
+
 export default function App() {
-  const [urls, setUrls] = useState({ original: '', cloudinary: '', competitor: '' })
+  const [urls, setUrls] = useState(readParams)
   const [userAgent, setUserAgent] = useState('chrome')
   const [results, setResults] = useState(null)
   const [previewUrls, setPreviewUrls] = useState({ original: null, cloudinary: null, competitor: null })
@@ -38,6 +47,17 @@ export default function App() {
   const [error, setError] = useState(null)
 
   const setUrl = (key) => (val) => setUrls(u => ({ ...u, [key]: val }))
+
+  // Keep URL params in sync as fields change
+  useEffect(() => {
+    const p = new URLSearchParams()
+    if (urls.original)   p.set('original',   urls.original)
+    if (urls.cloudinary) p.set('cloudinary', urls.cloudinary)
+    if (urls.competitor) p.set('competitor', urls.competitor)
+    const qs = p.toString()
+    const next = qs ? `?${qs}` : window.location.pathname
+    window.history.replaceState(null, '', next)
+  }, [urls])
 
   async function analyze() {
     setError(null)
