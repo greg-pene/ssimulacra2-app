@@ -48,6 +48,7 @@
 }
 
 .preview-box {
+  position: relative;
   width: 100%;
   height: 160px;
   background: #0f172a;
@@ -63,6 +64,40 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
+  transition: opacity 0.15s;
+}
+
+.preview-box--clickable {
+  cursor: pointer;
+}
+
+.preview-box--clickable:hover .preview-img {
+  opacity: 0.75;
+}
+
+.preview-compare-hint {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.65);
+  color: #e2e8f0;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 4px 10px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  opacity: 0;
+  transition: opacity 0.15s;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.preview-box--clickable:hover .preview-compare-hint {
+  opacity: 1;
 }
 
 .preview-placeholder {

@@ -8,7 +8,7 @@ function formatBytes(bytes) {
   return `${(bytes / 1024 / 1024).toFixed(2)} MB`
 }
 
-export default function ImageInput({ label, badge, badgeColor, urlValue, onUrlChange, placeholder, result, isWinner, previewSrc }) {
+export default function ImageInput({ label, badge, badgeColor, urlValue, onUrlChange, placeholder, result, isWinner, previewSrc, onThumbnailClick }) {
   const [blurPreview, setBlurPreview] = useState(null)
   const [previewError, setPreviewError] = useState(false)
 
@@ -42,7 +42,10 @@ export default function ImageInput({ label, badge, badgeColor, urlValue, onUrlCh
         )}
       </div>
 
-      <div className="preview-box">
+      <div
+        className={`preview-box${onThumbnailClick ? ' preview-box--clickable' : ''}`}
+        onClick={onThumbnailClick || undefined}
+      >
         {imgSrc && !previewError ? (
           <img
             src={imgSrc}
@@ -58,6 +61,14 @@ export default function ImageInput({ label, badge, badgeColor, urlValue, onUrlCh
               <path d="M21 15l-5-5L5 21" />
             </svg>
             <span>Preview</span>
+          </div>
+        )}
+        {onThumbnailClick && imgSrc && !previewError && (
+          <div className="preview-compare-hint">
+            <svg width="14" height="14" viewBox="0 0 20 20" fill="none">
+              <path d="M7 4l-4 6 4 6M13 4l4 6-4 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+            Compare
           </div>
         )}
       </div>

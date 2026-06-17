@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import ImageInput from './components/ImageInput.jsx'
 import ScoreGauge from './components/ScoreGauge.jsx'
+import CompareModal from './components/CompareModal.jsx'
 import './App.css'
 
 const UA_OPTIONS = [
@@ -71,6 +72,7 @@ export default function App() {
 
   const canSubmit = urls.original && urls.cloudinary && urls.competitor && !loading
 
+  const [compareOpen, setCompareOpen] = useState(false)
   const cloudinaryWinner = results && results.cloudinary.score >= results.competitor.score
   const competitorWinner = results && results.competitor.score > results.cloudinary.score
 
@@ -115,6 +117,7 @@ export default function App() {
               placeholder="https://example.com/original.jpg"
               result={results ? { ...results.original } : null}
               previewSrc={previewUrls.original}
+              onThumbnailClick={results ? () => setCompareOpen(true) : null}
             />
             <ImageInput
               label="Cloudinary Optimized"
@@ -126,6 +129,7 @@ export default function App() {
               result={results ? { ...results.cloudinary, isWinner: cloudinaryWinner } : null}
               isWinner={cloudinaryWinner}
               previewSrc={previewUrls.cloudinary}
+              onThumbnailClick={results ? () => setCompareOpen(true) : null}
             />
             <ImageInput
               label="Competitor Optimized"
@@ -137,6 +141,7 @@ export default function App() {
               result={results ? { ...results.competitor, isWinner: competitorWinner } : null}
               isWinner={competitorWinner}
               previewSrc={previewUrls.competitor}
+              onThumbnailClick={results ? () => setCompareOpen(true) : null}
             />
           </div>
 
@@ -196,6 +201,14 @@ export default function App() {
           </section>
         )}
       </main>
+
+      {compareOpen && results && (
+        <CompareModal
+          cloudinaryUrl={previewUrls.cloudinary || urls.cloudinary}
+          competitorUrl={previewUrls.competitor || urls.competitor}
+          onClose={() => setCompareOpen(false)}
+        />
+      )}
     </div>
   )
 }
