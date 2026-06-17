@@ -170,6 +170,42 @@ h1 {
 
 @keyframes spin { to { transform: rotate(360deg); } }
 
+.share-row {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.btn-share {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: transparent;
+  color: #64748b;
+  border: 1px solid #1e293b;
+  border-radius: 8px;
+  padding: 9px 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.btn-share:hover:not(:disabled) {
+  color: #94a3b8;
+  border-color: #334155;
+  background: #111827;
+}
+
+.btn-share:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.btn-share.copied, .share-check {
+  color: #22c55e;
+}
+
 .error-box {
   background: rgba(239, 68, 68, 0.1);
   border: 1px solid rgba(239, 68, 68, 0.3);

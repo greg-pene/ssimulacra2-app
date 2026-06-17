@@ -4,6 +4,15 @@ import ScoreGauge from './components/ScoreGauge.jsx'
 import CompareModal from './components/CompareModal.jsx'
 import './App.css'
 
+function ShareIcon() {
+  return (
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+      <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+    </svg>
+  )
+}
+
 const UA_OPTIONS = [
   {
     key: 'chrome',
@@ -93,6 +102,20 @@ export default function App() {
   const canSubmit = urls.original && urls.cloudinary && urls.competitor && !loading
 
   const [compareOpen, setCompareOpen] = useState(false)
+  const [copied, setCopied] = useState(false)
+
+  function copyShareUrl() {
+    const p = new URLSearchParams()
+    if (urls.original)   p.set('original',   urls.original)
+    if (urls.cloudinary) p.set('cloudinary', urls.cloudinary)
+    if (urls.competitor) p.set('competitor', urls.competitor)
+    const shareUrl = `${window.location.origin}${window.location.pathname}?${p.toString()}`
+    navigator.clipboard.writeText(shareUrl)
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
+  }
+
+  const canShare = urls.original || urls.cloudinary || urls.competitor
   const cloudinaryWinner = results && results.cloudinary.score >= results.competitor.score
   const competitorWinner = results && results.competitor.score > results.cloudinary.score
 
@@ -171,6 +194,16 @@ export default function App() {
                 <><span className="spinner" /> Analyzing…</>
               ) : (
                 'Run SSIMULACRA2 Analysis'
+              )}
+            </button>
+          </div>
+
+          <div className="share-row">
+            <button className="btn-share" onClick={copyShareUrl} disabled={!canShare}>
+              {copied ? (
+                <><span className="share-check">✓</span> Copied!</>
+              ) : (
+                <><ShareIcon /> Copy shareable URL</>
               )}
             </button>
           </div>
